@@ -1,1 +1,3 @@
-from .clf_training import ClassificationTraining
+from .classifier import Classifier
+from .regressor import Regressor
+

@@ -9,7 +9,7 @@ class WriteToCSV:
             for i in range(0, len(argv)):
                 result_string.append(str(argv[i]))
 
-            with open('../../resulr/res_result_'+argv[0]+'.csv', 'a', newline='') as f:
+            with open('../../results/res_result_'+argv[0]+'.csv', 'a', newline='') as f:
                 writer = csv.writer(f)
                 writer.writerow(result_string)
         except Exception as e:

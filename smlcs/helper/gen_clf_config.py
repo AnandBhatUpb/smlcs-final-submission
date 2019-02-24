@@ -14,6 +14,13 @@ def gen_clf_config():
                'min_samples_leaf': [1, 2, 4],
                'bootstrap': [True, False]}
 
+    rf_grid = {'n_estimators': [500, 100],
+               'max_features': ['auto'],
+               'max_depth': [10],
+               'min_samples_split': [2],
+               'min_samples_leaf': [1],
+               'bootstrap': [True]}
+
     classifier_config['classifiers'].append({
         'clf_name': 'rf',
         'clf_parameters': rf_grid

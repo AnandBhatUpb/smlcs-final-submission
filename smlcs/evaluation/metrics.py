@@ -5,7 +5,7 @@ class Metrics:
             estimator = self.estimator
             means = estimator.cv_results_['mean_test_score']
             stds = estimator.cv_results_['std_test_score']
-            grid_metric_file = open("./../results/grid_metric_"+str(argv[0])+"_"+str(argv[1])+".txt", "w+")
+            grid_metric_file = open("../../results/grid_metric_"+str(argv[0])+"_"+str(argv[1])+".txt", "w+")
             logger.info('Grid  models metrics file : {}'.format(grid_metric_file))
             logger.info('Writing to: {}'.format(grid_metric_file))
             for mean, std, params in zip(means, stds, estimator.cv_results_['params']):

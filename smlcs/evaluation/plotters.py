@@ -10,7 +10,7 @@ class Plotters:
             estimator = self.estimator.best_estimator_
             cm = confusion_matrix(y_target=y_test, y_predicted=estimator.predict(x_test), binary=False)
             fig, ax = plot_confusion_matrix(conf_mat=cm, figsize=(15, 15))
-            plt.savefig('../../plot/cm_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            plt.savefig('../../plots/cm_'+str(argv[0])+"_"+str(argv[1])+'.png')
         except Exception as e:
             logger.error('Failed in plot_confusion_matrix:' + str(e))
 
@@ -22,7 +22,7 @@ class Plotters:
             # plt.scatter(lm.predict(X_test), y_test  , color='g', s = 40, alpha=0.5)
             plt.ylabel('Residual')
             plt.title('Residual Vs predicted')
-            plt.savefig('../../plot/res_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            plt.savefig('../../plots/res_'+str(argv[0])+"_"+str(argv[1])+'.png')
         except Exception as e:
             logger.error('Failed in plot_residuals_plot:' + str(e))
 
@@ -36,7 +36,7 @@ class Plotters:
             plt.barh(range(len(indices)), importances[indices], color='g', align='center')
             plt.yticks(range(len(indices)), [features[i] for i in indices])
             plt.xlabel('Relative Importance')
-            plt.savefig('../../plot/fi_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            plt.savefig('../../plots/fi_'+str(argv[0])+"_"+str(argv[1])+'.png')
         except Exception as e:
             logger.error('Failed in plot_feature_imp:' + str(e))
 

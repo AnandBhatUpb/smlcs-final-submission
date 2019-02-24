@@ -17,26 +17,29 @@ import datetime
 import logging
 import json
 from docopt import docopt
+import numpy as np
 
 from smlcs.helper.read_data import ReadData
 from smlcs.evaluation.metrics import Metrics
 from smlcs.evaluation.plotters import Plotters
 from smlcs.helper.write_training_result import WriteToCSV
 
+from smlcs.helper.preprocessing import Preprocessing
+from sklearn.preprocessing import StandardScaler
 from sklearn import svm, ensemble
 from skopt import BayesSearchCV
 
 
 class Regressor:
 
-    def local_training(self, environment, reg, X, Y, outercv, logger):
+    def local_training(environment, reg, X, Y, outercv, logger):
         try:
             print('Not Implemented')
         except Exception as e:
             print('Error')
             #logger.error('Failed in local training: ' + str(e))
 
-    def cluster_training(self, environment, reg, job_id, subjob_id, logger):
+    def cluster_training(environment, reg, job_id, subjob_id, logger):
         try:
             logger.info('Training environment: {}'.format(environment))
             logger.info('Regressor selected: {}'.format(reg))
@@ -48,26 +51,49 @@ class Regressor:
             outer_split_strategy = data['outer_split_strategy']
             logger.info('Data source selected for training: {}'.format(datasource))
 
-            X, Y = ReadData(datasource, logger).read_reg_data(logger)  # Read data from local/remote
+            X, Y, pgm_features= ReadData(datasource, logger).read_reg_data(logger)  # Read data from local/remote
+
+            X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
+
+            onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51],
+                                                                                        logger)  # OneHotCode categorical data
+            feature_names = pgm_features + config_features
+            X = np.delete(X, np.s_[42:51], axis=1)
+
+            logger.info('Shape of the onehotcoded data: {}'.format(onehotcoded_data.shape))
+            logger.info('Shape of the program feature data: {}'.format(X.shape))
+            logger.info('Feature names after onehotencoding: {}'.format(feature_names))
+
+            X = np.concatenate((X, onehotcoded_data), axis=1)
+
+            logger.info('Shape of the final processed data: {}'.format(X.shape))
 
             for f in data['folds']:
                 if int(subjob_id) == int(f['foldId']):
                     X_train, X_test = X[f['outer_train_index']], X[f['outer_test_index']]
                     y_train, y_test = Y[f['outer_train_index']], Y[f['outer_test_index']]
 
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
             with open('../configurations/reg_config.txt') as json_file:
                 reg_config = json.load(json_file)
             innercvfolds = int(reg_config['innercv_folds'])
             logger.info('Inner cross validation number of folds: {}'.format(innercvfolds))
 
+            estimator = None
+            tuning_parameters = None
             for c in reg_config['regressors']:
                 if reg == c['reg_name']:
                     if reg == 'rf':
                         estimator = ensemble.RandomForestRegressor()
+                        tuning_parameters = c['reg_parameters']
+                        break
                     else:
                         estimator = svm.SVR()
-
-                    tuning_parameters = c['reg_parameters']
+                        tuning_parameters = c['reg_parameters']
+                        break
 
             logger.info('estimator is : {}'.format(estimator))
             logger.info('Tunning parameters are: {}'.format(tuning_parameters))
@@ -88,11 +114,13 @@ class Regressor:
             best_estimator = metrics.grid_best_estimator(logger)
             grid_score = metrics.grid_score(logger)
             test_score = metrics.test_score(X_test, y_test, logger)
+            important_features = []
             if reg == 'rf':
                 important_features = metrics.get_imprtant_features(logger)
 
             plot = Plotters(opt_reg)
             plot.plot_residuals_plot(X_train, y_train, X_test, y_test, logger, job_id, subjob_id)
+            fi_path = ''
             if reg == 'rf':
                 plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
                 fi_path = './plot/fi_' + str(job_id) + "_" + str(subjob_id) + '.png'
@@ -121,12 +149,12 @@ class Regressor:
             if arguments['--job'] is None:
                 job_id = -1
             else:
-                job_id = int(arguments['--jobid'])
+                job_id = arguments['--job']
 
-            if arguments['--subjobid'] is None:
+            if arguments['--subjob'] is None:
                 subjob_id = -1
             else:
-                subjob_id = int(arguments['--subjobid'])
+                subjob_id = arguments['--subjob']
 
             if arguments['--reg'] is None:
                 reg = 'rf'

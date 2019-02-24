@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
@@ -5,9 +6,9 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 class Preprocessing:
     def handle_missing_data(self, X, logger):
         try:
-            imputer = SimpleImputer(missing_values='NaN', strategy='mean', axis=0)
-            imputer = imputer.fit(X)
-            return imputer.transform(X)
+            imputer = SimpleImputer(np.nan, strategy='mean')
+            impute = imputer.fit(X)
+            return impute.transform(X)
         except Exception as e:
             logger.error('Failed to handle missing data: ' + str(e))
             return None

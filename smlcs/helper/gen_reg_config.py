@@ -6,11 +6,11 @@ def gen_reg_config():
     regressor_config['regressors'] = []
     regressor_config['innercv_folds'] = 3
 
-    rf_grid = {'n_estimators': [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
+    rf_grid = {'n_estimators': [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
                'max_features': ['auto', 'sqrt'],
                'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, None],
-               'min_samples_split': [2, 5, 10],
-               'min_samples_leaf': [1, 2, 4],
+               'min_samples_split': [2, 5, 10, 20, 50],
+               'min_samples_leaf': [1, 2, 4, 6, 8, 10],
                'bootstrap': [True, False]}
 
     regressor_config['regressors'].append({
@@ -25,6 +25,23 @@ def gen_reg_config():
     regressor_config['regressors'].append({
         'reg_name': 'svr',
         'reg_parameters': svr_grid
+    })
+
+    xgb_grid = {
+        'learning_rate': [0.01, 0.03, 0.05, 0.1, 0.2],
+        'objective': ['multi:softprob'],
+        'n_estimators': [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
+        'min_child_weight': [1, 3, 5, 7, 10],
+        'gamma': [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1, 1.5, 2, 5],
+        'subsample': [0.6, 0.8, 1.0],
+        'colsample_bytree': [0.3, 0.4, 0.5, 0.7],
+        'max_depth': [3, 4, 5, 6, 8, 10, 12, 15],
+        'eval_metric': "rmse"
+    }
+
+    regressor_config['regressors'].append({
+        'reg_name': 'xgb',
+        'reg_parameters': xgb_grid
     })
 
     with open('../configurations/reg_config.txt', 'w') as outfile:

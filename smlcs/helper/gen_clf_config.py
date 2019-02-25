@@ -14,7 +14,7 @@ def gen_clf_config():
                'min_samples_leaf': [1, 2, 4, 6, 8, 10],
                'bootstrap': [True, False]}
 
-    rf_grid_test = {'n_estimators': [500, 100],
+    rf_grid_test = {'n_estimators': [100, 500],
                     'max_features': ['auto'],
                     'max_depth': [10],
                     'min_samples_split': [2],

@@ -24,6 +24,39 @@ Reg_training - INFO - estimator is : RandomForestRegressor(bootstrap=True, crite
            min_samples_leaf=1, min_samples_split=2,
            min_weight_fraction_leaf=0.0, n_estimators='warn', n_jobs=None,
            oob_score=False, random_state=None, verbose=0, warm_start=False)
-Reg_training - INFO - Tunning parameters are: {'n_estimators': [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000], 'max_features': ['auto', 'sqrt'], 'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, None], 'min_samples_split': [2, 5, 10, 20, 50], 'min_samples_leaf': [1, 2, 4, 6, 8, 10], 'bootstrap': [True, False]}
-Reg_training - INFO - Started Skopt CV at: 2019-02-25 17:36:23.229765
-Reg_training - ERROR - Failed in cluster training: could not convert string to float: 'sqrt'
+Reg_training - INFO - Tunning parameters are: {'n_estimators': [100, 120], 'max_features': ['auto', 'sqrt'], 'max_depth': [None], 'min_samples_split': [2], 'min_samples_leaf': [1], 'bootstrap': [True]}
+Reg_training - INFO - Started Skopt CV at: 2019-02-26 23:27:31.063719
+Reg_training - INFO - Ended Skopt CV at: 2019-02-27 00:29:00.738531
+Reg_training - INFO - Total time for parameter search: 1:01:29.674812
+Reg_training - INFO - Grid  models metrics file : <_io.TextIOWrapper name='../../results/grid_metric_888_1.txt' mode='w+' encoding='cp1252'>
+Reg_training - INFO - Writing to: <_io.TextIOWrapper name='../../results/grid_metric_888_1.txt' mode='w+' encoding='cp1252'>
+Reg_training - INFO - Writing completed
+Reg_training - INFO - Best parameters: {'bootstrap': True, 'max_depth': None, 'max_features': 'auto', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
+Reg_training - INFO - Best estimator: RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+           max_features='auto', max_leaf_nodes=None,
+           min_impurity_decrease=0.0, min_impurity_split=None,
+           min_samples_leaf=1, min_samples_split=2,
+           min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=None,
+           oob_score=False, random_state=None, verbose=0, warm_start=False)
+Reg_training - INFO - Best score in the grid: 0.8425354778676752
+Reg_training - INFO - Test score: 0.8672940813929344
+Reg_training - INFO - Important features: [9.84309453e-03 1.74366699e-02 6.15744920e-03 1.12204047e-02
+ 6.68768469e-03 1.07039996e-02 1.03770125e-02 1.09773036e-02
+ 2.10504286e-02 4.02225717e-03 6.75256868e-03 2.92263236e-03
+ 1.06391774e-02 3.30639988e-04 9.91518636e-04 7.64461056e-03
+ 2.27761933e-02 1.70014524e-03 1.29534832e-02 1.21351363e-02
+ 1.15471761e-03 1.06446575e-03 1.25066189e-02 5.86112980e-03
+ 4.88706705e-03 2.64820479e-03 3.02212717e-02 3.36506453e-03
+ 3.11479249e-03 1.40596564e-02 1.79043954e-02 1.94280895e-05
+ 3.46249710e-03 6.14904358e-03 6.44251732e-03 4.05349614e-03
+ 5.06270874e-04 6.50801649e-03 2.08503600e-03 3.85486896e-03
+ 1.59389720e-02 2.90558502e-01 7.34218756e-03 5.36449714e-03
+ 3.21608966e-03 3.13830086e-03 3.30478749e-03 1.21972744e-02
+ 6.13316144e-03 1.19028777e-02 1.05380079e-02 9.97692480e-03
+ 9.58591332e-03 1.74973926e-02 9.72356969e-03 1.57198655e-02
+ 2.15351798e-02 7.35842993e-03 3.38503890e-03 5.84978391e-03
+ 1.92698775e-02 1.24323888e-02 2.13340712e-02 7.35814848e-03
+ 1.67068597e-02 4.33292308e-03 5.77450747e-03 1.23141133e-02
+ 9.40507039e-03 6.20010183e-03 1.18397932e-02 3.63936091e-03
+ 5.31720918e-03 4.67880662e-03 1.34929581e-02 8.29928039e-03
+ 7.47603918e-03 1.38944771e-02 2.87762872e-02]

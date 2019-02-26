@@ -5,4 +5,5 @@ seaborn>=0.8.0
 scikit-learn>=0.18.2
 scikit-optimize>=0.4
 pandas>=0.22
+mlxtend>=0.13.0
 h5py>=2.7

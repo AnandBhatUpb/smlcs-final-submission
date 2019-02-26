@@ -1,4 +1,4 @@
-class Metrics:
+class CalculateMetrics:
 
     def grid_models_metrics(self, logger, *argv):
         try:
@@ -53,7 +53,6 @@ class Metrics:
             return imp_features
         except Exception as e:
             logger.error('Failed in get_imprtant_features:' + str(e))
-
 
     def __init__(self, estimator):
         self.estimator = estimator

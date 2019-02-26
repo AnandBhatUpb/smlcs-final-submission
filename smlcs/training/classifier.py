@@ -20,8 +20,8 @@ from docopt import docopt
 import numpy as np
 
 from smlcs.helper.read_data import ReadData
-from smlcs.evaluation.metrics import Metrics
-from smlcs.evaluation.plotters import Plotters
+from smlcs.evaluation.metrics import CalculateMetrics
+from smlcs.evaluation.plotters import PlotResults
 from smlcs.helper.preprocessing import Preprocessing
 from smlcs.helper.write_training_result import WriteToCSV
 
@@ -117,7 +117,7 @@ class Classifier:
             logger.info('Ended Skopt CV at: {}'.format(end_time))
             logger.info('Total time for parameter search: {}'.format(end_time-start_time))
 
-            metrics = Metrics(opt_clf)
+            metrics = CalculateMetrics(opt_clf)
             metrics.grid_models_metrics(logger, job_id, subjob_id)
             best_params = metrics.grid_best_params(logger)
             best_estimator = metrics.grid_best_estimator(logger)
@@ -127,7 +127,7 @@ class Classifier:
             if clf == 'rf':
                 important_features = metrics.get_imprtant_features(logger)
 
-            plot = Plotters(opt_clf)
+            plot = PlotResults(opt_clf)
             plot.plot_confusion_matrix(X_test, y_test, logger, job_id, subjob_id)
             fi_path = ''
             if clf == 'rf':

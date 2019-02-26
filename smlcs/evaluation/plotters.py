@@ -3,7 +3,8 @@ from mlxtend.plotting import plot_confusion_matrix
 from mlxtend.evaluate import confusion_matrix
 import matplotlib.pyplot as plt
 
-class Plotters:
+
+class PlotResults:
 
     def plot_confusion_matrix(self, x_test, y_test, logger, *argv):
         try:

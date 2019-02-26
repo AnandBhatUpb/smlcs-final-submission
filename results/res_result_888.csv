@@ -1,1 +1,0 @@
-888,1,1,2019-02-23 13:56:27.148526,rf,"{'max_depth': 20, 'max_features': 'auto', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 390}",0.8417191416379471,0.8670789266660378,3,shuffle,none,local,2019-02-23 11:34:45.386525,2019-02-23 13:56:23.419309,2:21:38.032784,"(27819, 79)","(9274, 79)",./logs/log_888_1.log,./plot/res_888_1.png,./plot/fi_888_1.png

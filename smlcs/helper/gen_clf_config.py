@@ -23,7 +23,7 @@ def gen_clf_config():
 
     classifier_config['classifiers'].append({
         'clf_name': 'rf',
-        'clf_parameters': rf_grid_test
+        'clf_parameters': rf_grid
     })
 
     svc_grid = [{'kernel': ['rbf'], 'gamma': [0.0001, 0.001, 0.01, 0.1, 1],

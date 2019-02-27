@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="65a53d93-6853-467a-994b-865c269c9ba4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smlcs/configurations/clf_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/smlcs/configurations/clf_config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/smlcs/helper/gen_clf_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/smlcs/helper/gen_clf_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smlcs/helper/gen_reg_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/smlcs/helper/gen_reg_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smlcs/training/classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/smlcs/training/classifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smlcs/training/regressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/smlcs/training/regressor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +31,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smlcs/training/classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="43" />
+            <state relative-caret-position="850">
+              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+              <folding>
+                <element signature="e#578#593#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smlcs/helper/gen_clf_config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -39,17 +55,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smlcs/helper/gen_reg_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="102">
+              <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/smlcs/helper/gen_clf_config.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smlcs/training/regressor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-135">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="-1071">
+              <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+              <folding>
+                <element signature="e#568#583#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,18 +114,18 @@
         <option value="$PROJECT_DIR$/smlcs/helper/preprocessing.py" />
         <option value="$PROJECT_DIR$/smlcs/start/regression.py" />
         <option value="$PROJECT_DIR$/smlcs/helper/write_training_result.py" />
-        <option value="$PROJECT_DIR$/smlcs/helper/gen_reg_config.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/requirements" />
         <option value="$PROJECT_DIR$/smlcs/__init__.py" />
-        <option value="$PROJECT_DIR$/smlcs/training/regressor.py" />
-        <option value="$PROJECT_DIR$/smlcs/training/classifier.py" />
         <option value="$PROJECT_DIR$/smlcs/evaluation/plotters.py" />
         <option value="$PROJECT_DIR$/smlcs/evaluation/metrics.py" />
         <option value="$PROJECT_DIR$/smlcs/evaluation/__init_.py" />
         <option value="$PROJECT_DIR$/smlcs/evaluation/__init__.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/smlcs/helper/gen_reg_config.py" />
         <option value="$PROJECT_DIR$/smlcs/helper/gen_clf_config.py" />
+        <option value="$PROJECT_DIR$/smlcs/training/classifier.py" />
+        <option value="$PROJECT_DIR$/smlcs/training/regressor.py" />
       </list>
     </option>
   </component>
@@ -121,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,18 +151,7 @@
             <path>
               <item name="sml-cs" type="b2602c69:ProjectViewProjectNode" />
               <item name="sml-cs" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sml-cs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sml-cs" type="462c0819:PsiDirectoryNode" />
               <item name="smlcs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sml-cs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sml-cs" type="462c0819:PsiDirectoryNode" />
-              <item name="smlcs" type="462c0819:PsiDirectoryNode" />
-              <item name="configurations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sml-cs" type="b2602c69:ProjectViewProjectNode" />
@@ -160,7 +169,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -232,9 +240,6 @@
       <module name="sml-cs" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smlcs/training" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -242,7 +247,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smlcs/training/classifier.py" />
-      <option name="PARAMETERS" value="--env=cluster --job=777 --subjob=1 --clf=rf" />
+      <option name="PARAMETERS" value="--env=cluster --job=999 --subjob=1 --clf=gb" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -367,8 +372,8 @@
       <list>
         <item itemvalue="Python.gen_reg_config" />
         <item itemvalue="Python.gen_clf_config" />
-        <item itemvalue="Python.setup" />
         <item itemvalue="Python.classifier" />
+        <item itemvalue="Python.setup" />
         <item itemvalue="Python.classification" />
       </list>
     </recent_temporary>
@@ -408,18 +413,18 @@
       <workItem from="1551088873947" duration="9566000" />
       <workItem from="1551138263046" duration="958000" />
       <workItem from="1551175064777" duration="1499000" />
-      <workItem from="1551225252373" duration="43000" />
+      <workItem from="1551225252373" duration="4032000" />
+      <workItem from="1551259735331" duration="7648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133595000" />
+    <option name="totallyTimeSpent" value="145232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17217484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17377399" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -434,13 +439,13 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.3575298" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.38786566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.915683" visible="true" weight="0.195629" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.91327435" visible="true" weight="0.195629" />
       <window_info anchor="right" id="Database" order="4" weight="0.32995737" />
-      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="5" sideWeight="0.08431703" side_tool="true" visible="true" weight="0.195629" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="5" sideWeight="0.08672567" side_tool="true" visible="true" weight="0.195629" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,11 +540,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements" />
-    <entry file="file://$PROJECT_DIR$/logs/log_888_1.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/log_888_1.log" />
     <entry file="file://$PROJECT_DIR$/smlcs/data_visualization/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -602,20 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smlcs/evaluation/plotters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smlcs/evaluation/metrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -623,17 +610,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smlcs/training/classifier.py">
+    <entry file="file://$PROJECT_DIR$/smlcs/evaluation/metrics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="43" />
+        <state relative-caret-position="34">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smlcs/evaluation/plotters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/smlcs/training/regressor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="103" column="82" selection-start-line="103" selection-start-column="82" selection-end-line="103" selection-end-column="82" />
+        <state relative-caret-position="-1071">
+          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
           <folding>
             <element signature="e#568#583#0" expanded="true" />
           </folding>
@@ -642,15 +639,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/smlcs/helper/gen_reg_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state relative-caret-position="102">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/smlcs/helper/gen_clf_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="-306">
+          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smlcs/training/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+          <folding>
+            <element signature="e#578#593#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

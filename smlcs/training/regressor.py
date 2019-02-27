@@ -28,6 +28,7 @@ from smlcs.helper.preprocessing import Preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm, ensemble
 from skopt import BayesSearchCV
+import xgboost
 
 
 class Regressor:
@@ -47,7 +48,6 @@ class Regressor:
             with open('../configurations/outer_fold_data_reg.txt') as json_file:
                 data = json.load(json_file)
             datasource = data['datasource']
-            feature_names = data['feature_names']
             outer_split_strategy = data['outer_split_strategy']
             logger.info('Data source selected for training: {}'.format(datasource))
 
@@ -90,8 +90,12 @@ class Regressor:
                         estimator = ensemble.RandomForestRegressor()
                         tuning_parameters = c['reg_parameters']
                         break
-                    else:
+                    elif reg == 'svr':
                         estimator = svm.SVR()
+                        tuning_parameters = c['reg_parameters']
+                        break
+                    else:
+                        estimator = ensemble.GradientBoostingRegressor()
                         tuning_parameters = c['reg_parameters']
                         break
 

@@ -29,6 +29,7 @@ from smlcs.helper.write_training_result import WriteToCSV
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm, ensemble
 from skopt import BayesSearchCV
+import xgboost
 
 
 class Classifier:
@@ -48,7 +49,6 @@ class Classifier:
             with open('../configurations/outer_fold_data_clf.txt') as json_file:
                 data = json.load(json_file)
             datasource = data['datasource']
-            feature_names = data['feature_names']
             outer_split_strategy = data['outer_split_strategy']
             logger.info('Data source selected for training: {}'.format(datasource))
 
@@ -96,8 +96,12 @@ class Classifier:
                         estimator = ensemble.RandomForestClassifier(class_weight=class_weight)
                         tuning_parameters = c['clf_parameters']
                         break
-                    else:
+                    elif clf == 'svc':
                         estimator = svm.SVC(class_weight=class_weight)
+                        tuning_parameters = c['clf_parameters']
+                        break
+                    else:
+                        estimator = ensemble.GradientBoostingClassifier()
                         tuning_parameters = c['clf_parameters']
                         break
 

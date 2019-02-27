@@ -1,0 +1,1 @@
+999,1,1,2019-02-27 12:57:42.567470,gb,"{'learning_rate': 0.02, 'max_depth': 4, 'max_features': 9, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 200, 'subsample': 0.7}",0.7700340831629175,0.7648261758691206,3,shuffle,none,local,2019-02-27 11:40:31.318907,2019-02-27 12:57:41.086569,1:17:09.767662,"(36675, 79)","(12225, 79)",./logs/log_999_1.log,./plot/cm_999_1.png,

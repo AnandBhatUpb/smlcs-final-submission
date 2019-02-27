@@ -29,7 +29,6 @@ from smlcs.helper.write_training_result import WriteToCSV
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm, ensemble
 from skopt import BayesSearchCV
-import xgboost
 
 
 class Classifier:

@@ -28,7 +28,6 @@ from smlcs.helper.preprocessing import Preprocessing
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm, ensemble
 from skopt import BayesSearchCV
-import xgboost
 
 
 class Regressor:

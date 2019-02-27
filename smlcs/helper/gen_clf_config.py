@@ -8,11 +8,11 @@ def gen_clf_config():
     classifier_config['class_weight'] = 'balanced'
 
     rf_grid = {'n_estimators': [100, 200],
-                    'max_features': ['sqrt'],
-                    'max_depth': [10],
-                    'min_samples_split': [2],
-                    'min_samples_leaf': [1],
-                    'bootstrap': [True]}
+               'max_features': ['sqrt'],
+               'max_depth': [10],
+               'min_samples_split': [2],
+               'min_samples_leaf': [1],
+               'bootstrap': [True]}
 
     classifier_config['classifiers'].append({
         'clf_name': 'rf',

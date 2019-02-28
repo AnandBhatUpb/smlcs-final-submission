@@ -89,15 +89,15 @@ class Classifier:
             for c in clf_config['classifiers']:
                 if clf == c['clf_name']:
                     if clf == 'rf':
-                        estimator = ensemble.RandomForestClassifier(class_weight=class_weight)
+                        estimator = ensemble.RandomForestClassifier(class_weight=class_weight, random_state=0)
                         tuning_parameters = c['clf_parameters']
                         break
                     elif clf == 'svc':
-                        estimator = svm.SVC(class_weight=class_weight)
+                        estimator = svm.SVC(class_weight=class_weight, random_state=0)
                         tuning_parameters = c['clf_parameters']
                         break
                     else:
-                        estimator = ensemble.GradientBoostingClassifier()
+                        estimator = ensemble.GradientBoostingClassifier(random_state=0)
                         tuning_parameters = c['clf_parameters']
                         break
 

@@ -87,15 +87,15 @@ class Regressor:
             for c in reg_config['regressors']:
                 if reg == c['reg_name']:
                     if reg == 'rf':
-                        estimator = ensemble.RandomForestRegressor()
+                        estimator = ensemble.RandomForestRegressor(random_state=0)
                         tuning_parameters = c['reg_parameters']
                         break
                     elif reg == 'svr':
-                        estimator = svm.SVR()
+                        estimator = svm.SVR(random_state=0)
                         tuning_parameters = c['reg_parameters']
                         break
                     else:
-                        estimator = ensemble.GradientBoostingRegressor()
+                        estimator = ensemble.GradientBoostingRegressor(random_state=0)
                         tuning_parameters = c['reg_parameters']
                         break
 

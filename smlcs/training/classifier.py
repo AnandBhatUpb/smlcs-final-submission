@@ -18,6 +18,7 @@ import logging
 import json
 from docopt import docopt
 import numpy as np
+from joblib import dump, load
 
 from smlcs.helper.read_data import ReadData
 from smlcs.evaluation.metrics import CalculateMetrics
@@ -86,12 +87,8 @@ class Classifier:
             estimator = None
             tuning_parameters = None
             for c in clf_config['classifiers']:
-                print(c['clf_name'])
-                print(len(clf))
                 if clf == c['clf_name']:
-                    print('inside1')
                     if clf == 'rf':
-                        print('inside2')
                         estimator = ensemble.RandomForestClassifier(class_weight=class_weight)
                         tuning_parameters = c['clf_parameters']
                         break
@@ -103,9 +100,6 @@ class Classifier:
                         estimator = ensemble.GradientBoostingClassifier()
                         tuning_parameters = c['clf_parameters']
                         break
-
-            print(estimator)
-            print(tuning_parameters)
 
             logger.info('estimator is : {}'.format(estimator))
             logger.info('Tunning parameters are: {}'.format(tuning_parameters))
@@ -130,15 +124,9 @@ class Classifier:
             if clf == 'rf':
                 important_features = metrics.get_imprtant_features(logger)
 
-            plot = PlotResults(opt_clf)
-            plot.plot_confusion_matrix(X_test, y_test, logger, job_id, subjob_id)
-            fi_path = ''
-            if clf == 'rf':
-                plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
-                fi_path = './plot/fi_' + str(job_id) + "_" + str(subjob_id) + '.png'
-
             log_path = './logs/log_'+str(job_id)+'_'+str(subjob_id)+'.log'
-            cm_path = './plot/cm_'+str(job_id)+'_'+str(subjob_id)+'.png'
+            cm_path = './plots/cm_'+str(job_id)+'_'+str(subjob_id)+'.png'
+            fi_path = './plots/fi_' + str(job_id) + "_" + str(subjob_id) + '.png'
 
             # dump all results into the training_result.csv file
             writer = WriteToCSV()
@@ -146,6 +134,13 @@ class Classifier:
                                        grid_score, test_score, innercvfolds, outer_split_strategy, 'none', datasource,
                                        start_time, end_time, end_time-start_time, X_train.shape, X_test.shape,
                                        log_path, cm_path, fi_path)
+
+            dump(opt_clf, '../../models_persisted/clf_'+clf+'_'+job_id+'_'+subjob_id+'.joblib')
+
+            plot = PlotResults(opt_clf)
+            plot.plot_confusion_matrix(X_test, y_test, logger, job_id, subjob_id)
+            if clf == 'rf':
+                plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
 
         except Exception as e:
             logger.error('Failed in cluster training: ' + str(e))

@@ -7,3 +7,5 @@ scikit-optimize>=0.4
 pandas>=0.22
 mlxtend>=0.13.0
 h5py>=2.7
+joblib>=0.9.4
+

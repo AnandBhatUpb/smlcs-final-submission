@@ -18,6 +18,7 @@ import logging
 import json
 from docopt import docopt
 import numpy as np
+from joblib import dump, load
 
 from smlcs.helper.read_data import ReadData
 from smlcs.evaluation.metrics import CalculateMetrics
@@ -121,22 +122,23 @@ class Regressor:
             if reg == 'rf':
                 important_features = metrics.get_imprtant_features(logger)
 
-            plot = PlotResults(opt_reg)
-            plot.plot_residuals_plot(X_train, y_train, X_test, y_test, logger, job_id, subjob_id)
-            fi_path = ''
-            if reg == 'rf':
-                plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
-                fi_path = './plot/fi_' + str(job_id) + "_" + str(subjob_id) + '.png'
-
-            log_path = './logs/log_'+str(job_id)+'_'+str(subjob_id)+'.log'
-            res_path = './plot/res_'+str(job_id)+'_'+str(subjob_id)+'.png'
+            log_path = './logs/log_' + str(job_id) + '_' + str(subjob_id) + '.log'
+            res_path = './plots/res_' + str(job_id) + '_' + str(subjob_id) + '.png'
+            fi_path = './plots/fi_' + str(job_id) + "_" + str(subjob_id) + '.png'
 
             # dump all results into the training_result.csv file
             writer = WriteToCSV()
             writer.write_result_to_csv(logger, job_id, subjob_id, subjob_id, datetime.datetime.now(), reg, best_params,
                                        grid_score, test_score, innercvfolds, outer_split_strategy, 'none', datasource,
-                                       start_time, end_time, end_time-start_time, X_train.shape, X_test.shape,
+                                       start_time, end_time, end_time - start_time, X_train.shape, X_test.shape,
                                        log_path, res_path, fi_path)
+
+            dump(opt_reg, '../../models_persisted/reg_'+reg+'_'+job_id+'_'+subjob_id+'.joblib')
+
+            plot = PlotResults(opt_reg)
+            plot.plot_residuals_plot(X_train, y_train, X_test, y_test, logger, job_id, subjob_id)
+            if reg == 'rf':
+                plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
 
         except Exception as e:
             logger.error('Failed in cluster training: ' + str(e))

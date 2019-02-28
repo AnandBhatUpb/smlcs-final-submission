@@ -52,7 +52,7 @@ class Classifier:
             outer_split_strategy = data['outer_split_strategy']
             logger.info('Data source selected for training: {}'.format(datasource))
 
-            X, Y, pgm_features= ReadData(datasource, logger).read_clf_data(logger)  # Read data from local/remote
+            X, Y, pgm_features = ReadData(datasource, logger).read_clf_data(logger)  # Read data from local/remote
             X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
 
             onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51],
@@ -135,13 +135,16 @@ class Classifier:
                                        start_time, end_time, end_time-start_time, X_train.shape, X_test.shape,
                                        log_path, cm_path, fi_path)
 
+            logger.info('Saving trained model')
             dump(opt_clf, '../../models_persisted/clf_'+clf+'_'+job_id+'_'+subjob_id+'.joblib')
+            logger.info('Saved model: {}'.format('reg_'+clf+'_'+job_id+'_'+subjob_id+'.joblib'))
 
-            plot = PlotResults(opt_clf)
-            plot.plot_confusion_matrix(X_test, y_test, logger, job_id, subjob_id)
-            if clf == 'rf':
-                plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
-
+            if environment == 'local':
+                plot = PlotResults(opt_clf)
+                plot.plot_confusion_matrix(X_test, y_test, logger, job_id, subjob_id)
+                if clf == 'rf':
+                    plot.plot_feature_imp(feature_names, logger, job_id, subjob_id)
+            logger.info('Done')
         except Exception as e:
             logger.error('Failed in cluster training: ' + str(e))
 

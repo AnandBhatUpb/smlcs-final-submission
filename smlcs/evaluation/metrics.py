@@ -10,6 +10,7 @@ class CalculateMetrics:
             logger.info('Writing to: {}'.format(grid_metric_file))
             for mean, std, params in zip(means, stds, estimator.cv_results_['params']):
                 grid_metric_file.write("%0.3f (+/-%0.03f) for %r \n" % (mean, std * 2, params))
+            grid_metric_file.close()
             logger.info('Writing completed')
         except Exception as e:
             logger.error('Failed in grid_model_metrics: :' + str(e))

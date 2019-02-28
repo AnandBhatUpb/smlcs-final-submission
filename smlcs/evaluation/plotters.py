@@ -12,6 +12,7 @@ class PlotResults:
             cm = confusion_matrix(y_target=y_test, y_predicted=estimator.predict(x_test), binary=False)
             fig, ax = plot_confusion_matrix(conf_mat=cm, figsize=(15, 15))
             plt.savefig('../../plots/cm_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            logger.info('Plotting confusion matrix completed')
         except Exception as e:
             logger.error('Failed in plot_confusion_matrix:' + str(e))
 
@@ -24,6 +25,7 @@ class PlotResults:
             plt.ylabel('Residual')
             plt.title('Residual Vs predicted')
             plt.savefig('../../plots/res_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            logger.info('Plotting residual plot completed')
         except Exception as e:
             logger.error('Failed in plot_residuals_plot:' + str(e))
 
@@ -38,6 +40,7 @@ class PlotResults:
             plt.yticks(range(len(indices)), [features[i] for i in indices])
             plt.xlabel('Relative Importance')
             plt.savefig('../../plots/fi_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            logger.info('Plotting feature importance completed')
         except Exception as e:
             logger.error('Failed in plot_feature_imp:' + str(e))
 

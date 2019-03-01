@@ -1,0 +1,63 @@
+Clf_training - INFO - Cluster job ID: 999
+Clf_training - INFO - Cluster sub job ID: 2
+Clf_training - INFO - Training environment: cluster
+Clf_training - INFO - Classifier selected: rf
+Clf_training - INFO - Data source selected for training: local
+Clf_training - INFO - Dataset set is reading...
+Clf_training - INFO - Dataset shape classification: (48900, 52)
+Clf_training - INFO - Dataset shape regression: (37093, 52)
+Clf_training - INFO - Onehot encoded feature names: ['x0_bmc' 'x0_predicate' 'x0_value' 'x0_valueBdd' 'x0_valuePredicate'
+ 'x1_lbe' 'x1_notApply' 'x1_notset' 'x1_sbe' 'x2_no' 'x2_yes'
+ 'x3_BamRefiner' 'x3_notApply' 'x3_notset' 'x3_predicateRefiner'
+ 'x3_sliceRefiner' 'x3_valueDelegateRefiner' 'x3_valueRefiner'
+ 'x4_notApply' 'x4_notset' 'x4_yes' 'x5_bool' 'x5_intAdd' 'x5_notApply'
+ 'x5_notset' 'x6_bdd' 'x6_formula' 'x6_notApply' 'x7_1' 'x7_10' 'x7_20'
+ 'x7_5' 'x7_notApply' 'x8_df' 'x8_ki' 'x8_notApply' 'x8_notset']
+Clf_training - INFO - Shape of the onehotcoded data: (48900, 37)
+Clf_training - INFO - Shape of the program feature data: (48900, 42)
+Clf_training - INFO - Feature names after onehotencoding: ['SYNT_CONST', 'CONST_ASSIGN', 'COUNTER', 'PURE_COUNTER', 'LINEAR', 'PURE_LINEAR', 'BOOL', 'PURE_BOOLEAN', 'COMPARED_TO_CONST', 'MODE', 'LOOP_IT', 'LOOP_BOUND', 'ARRAY_INDEX', 'OFFSET', 'ARRAY_SIZE', 'INPUT', 'BRANCH_COND', 'BITVECTOR', 'UNRES_DATA', 'SCALAR_INT', 'SCALAR_FLOAT', 'SCALAR', 'PTR', 'PTR_SCALAR', 'PTR_STRUCT', 'PTR_STRUCT_PTR', 'PTR_STRUCT_REC', 'PTR_COMPL_STRUCT_REC', 'HEAP_PTR', 'USED_IN_ARITHM', 'EXTERNAL_VAR', 'RECURSIVE_FUNC', 'STRUCT_FIELD', 'bounded', 'terminating', 'simple', 'tnont', 'hard', 'fpcalls', 'fpargs', 'cfgblocks', 'maxindeg', 'x0_bmc', 'x0_predicate', 'x0_value', 'x0_valueBdd', 'x0_valuePredicate', 'x1_lbe', 'x1_notApply', 'x1_notset', 'x1_sbe', 'x2_no', 'x2_yes', 'x3_BamRefiner', 'x3_notApply', 'x3_notset', 'x3_predicateRefiner', 'x3_sliceRefiner', 'x3_valueDelegateRefiner', 'x3_valueRefiner', 'x4_notApply', 'x4_notset', 'x4_yes', 'x5_bool', 'x5_intAdd', 'x5_notApply', 'x5_notset', 'x6_bdd', 'x6_formula', 'x6_notApply', 'x7_1', 'x7_10', 'x7_20', 'x7_5', 'x7_notApply', 'x8_df', 'x8_ki', 'x8_notApply', 'x8_notset']
+Clf_training - INFO - Shape of the final processed data: (48900, 79)
+Clf_training - INFO - Encoded classes are : ['CORRECT' 'ERROR' 'EXCEPTION' 'INCORRECT' 'TIMEOUT' 'unknown']
+Clf_training - INFO - Inner cross validation number of folds: 3
+Clf_training - INFO - estimator is : RandomForestClassifier(bootstrap=True, class_weight='balanced',
+            criterion='gini', max_depth=None, max_features='auto',
+            max_leaf_nodes=None, min_impurity_decrease=0.0,
+            min_impurity_split=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators='warn', n_jobs=None, oob_score=False,
+            random_state=0, verbose=0, warm_start=False)
+Clf_training - INFO - Tunning parameters are: {'n_estimators': [100, 200], 'max_features': [4], 'max_depth': [None], 'min_samples_split': [2], 'min_samples_leaf': [1], 'bootstrap': [True]}
+Clf_training - INFO - Started Skopt CV at: 2019-03-01 10:41:31.656091
+Clf_training - INFO - Ended Skopt CV at: 2019-03-01 10:55:31.816760
+Clf_training - INFO - Total time for parameter search: 0:14:00.160669
+Clf_training - INFO - Grid  models metrics file : <_io.TextIOWrapper name='../../results/grid_metric_999_2.txt' mode='w+' encoding='cp1252'>
+Clf_training - INFO - Writing to: <_io.TextIOWrapper name='../../results/grid_metric_999_2.txt' mode='w+' encoding='cp1252'>
+Clf_training - INFO - Writing completed
+Clf_training - INFO - Best parameters: {'bootstrap': True, 'max_depth': None, 'max_features': 4, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+Clf_training - INFO - Best estimator: RandomForestClassifier(bootstrap=True, class_weight='balanced',
+            criterion='gini', max_depth=None, max_features=4,
+            max_leaf_nodes=None, min_impurity_decrease=0.0,
+            min_impurity_split=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            n_estimators=200, n_jobs=None, oob_score=False, random_state=0,
+            verbose=0, warm_start=False)
+Clf_training - INFO - Best score in the grid: 0.8969325153374234
+Clf_training - INFO - Test score: 0.9067484662576687
+Clf_training - INFO - Important features: [0.01323181 0.01946183 0.02044604 0.01953985 0.02113308 0.02052418
+ 0.0187002  0.016649   0.01048957 0.00778441 0.01233143 0.00761304
+ 0.01497308 0.00294288 0.01689978 0.02296983 0.0195952  0.00237419
+ 0.02243527 0.02255781 0.0051453  0.00497339 0.01799903 0.01747273
+ 0.0104459  0.01108576 0.01078849 0.00618008 0.01856641 0.01673778
+ 0.01060987 0.00281685 0.00846748 0.00745792 0.0073086  0.0086037
+ 0.00196349 0.00952806 0.00346942 0.00382221 0.0217882  0.01590101
+ 0.00456698 0.0084496  0.00835376 0.00710912 0.00297832 0.01539405
+ 0.00779763 0.00355254 0.01489738 0.02933481 0.02920684 0.03446836
+ 0.00431636 0.03853727 0.01783366 0.01853923 0.00295497 0.00515376
+ 0.03267999 0.01850714 0.02392616 0.0110546  0.01414435 0.0079087
+ 0.00890257 0.01142817 0.01290221 0.00741406 0.00482906 0.00262468
+ 0.00351144 0.00284947 0.00476084 0.00778313 0.00712648 0.00447618
+ 0.02594199]
+Clf_training - INFO - Writing result to csv file done
+Clf_training - INFO - Saving trained model
+Clf_training - INFO - Saved model: clf_rf_999_2.joblib
+Clf_training - INFO - Done

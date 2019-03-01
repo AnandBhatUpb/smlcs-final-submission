@@ -91,7 +91,7 @@ class Regressor:
                         tuning_parameters = c['reg_parameters']
                         break
                     elif reg == 'svr':
-                        estimator = svm.SVR(random_state=0)
+                        estimator = svm.SVR()
                         tuning_parameters = c['reg_parameters']
                         break
                     else:

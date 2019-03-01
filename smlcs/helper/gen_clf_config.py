@@ -7,21 +7,24 @@ def gen_clf_config():
     classifier_config['innercv_folds'] = 3
     classifier_config['class_weight'] = 'balanced'
 
-    rf_grid = {'n_estimators': [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
-               'max_features': [4, 5, 7, 9, 10, 13],
-               'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, None],
-               'min_samples_split': [2, 5, 10, 20, 50],
-               'min_samples_leaf': [1, 2, 4, 6, 8, 10],
-               'bootstrap': [True, False]}
+    rf_grid = {'n_estimators': (100, 2000),
+               'max_features': (4, 13),
+               'max_depth': (10, 100),
+               'min_samples_split': (2, 50),
+               'min_samples_leaf': (1, 10),
+               }
 
     classifier_config['classifiers'].append({
         'clf_name': 'rf',
         'clf_parameters': rf_grid
     })
 
-    svc_grid = [{'kernel': ['rbf'], 'gamma': [0.0001, 0.001, 0.01, 0.1, 1],
-                 'C': [0.01, 0.1, 1, 10, 100, 1000]},
-                {'kernel': ['linear'], 'C': [0.01, 0.1, 1, 10, 100, 1000]}]
+    svc_grid = {
+        'C': (1e-6, 1e+6, 'log-uniform'),
+        'gamma': (1e-6, 1e+1, 'log-uniform'),
+        'degree': (1, 8),  # integer valued parameter
+        'kernel': ['linear', 'poly', 'rbf'],  # categorical parameter
+    }
 
     classifier_config['classifiers'].append({
         'clf_name': 'svc',
@@ -29,13 +32,13 @@ def gen_clf_config():
     })
 
     gb_grid = {
-        'learning_rate': [0.01, 0.03, 0.05, 0.1, 0.2],
-        'n_estimators': [100, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
-        'min_samples_split': [2, 5, 10, 20, 50],
-        'min_samples_leaf': [1, 2, 4, 6, 8, 10],
-        'max_features': [4, 5, 7, 9, 10, 13],
-        'subsample': [0.6, 0.7, 0.8, 1.0],
-        'max_depth': [3, 4, 5, 6, 8, 10, 12, 15]
+        'learning_rate': (0.01, 0.2),
+        'n_estimators': (100, 2000),
+        'min_samples_split': (2, 50),
+        'min_samples_leaf': (1, 10),
+        'max_features': (4, 13),
+        'subsample': (0.6, 1.0),
+        'max_depth': (3, 15)
     }
 
     classifier_config['classifiers'].append({

@@ -18,8 +18,7 @@ import logging
 import json
 from docopt import docopt
 import numpy as np
-from joblib import dump, load
-
+from joblib import dump
 from smlcs.helper.read_data import ReadData
 from smlcs.evaluation.metrics import CalculateMetrics
 from smlcs.evaluation.plotters import PlotResults

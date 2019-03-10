@@ -7,7 +7,7 @@ Usage:
 
 Options:
   -h --help                             Show this screen.
-  --env<run_environment>                specifies the running environment cluster/PC
+  --env=<run_environment>                specifies the running environment cluster/PC
   --job=<jobid>                         specifies cluster job id
   --subjob=<subjobid>                   specifies cluster subjob id
   --reg=<regressor>                    specifies classifier to train

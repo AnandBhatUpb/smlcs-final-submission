@@ -4,9 +4,13 @@ import json
 def gen_clf_config():
     classifier_config = dict()
     classifier_config['classifiers'] = []
-    classifier_config['innercv_folds'] = 2
+    classifier_config['innercv_folds'] = 3
 
-    rf_grid = {'n_estimators': (100, 102),
+    rf_grid = {'n_estimators': (100, 1000),
+               'max_features': (4, 13),
+               'max_depth': (10, 100),
+               'min_samples_split': (2, 50),
+               'min_samples_leaf': (1, 10),
                'bootstrap': [True, False]
                }
 
@@ -16,7 +20,10 @@ def gen_clf_config():
     })
 
     svc_grid = {
-        'C': (1e-1, 1, 'log-uniform')
+        'C': (1e-4, 1e+2, 'log-uniform'),
+        'gamma': (1e-6, 1e+1, 'log-uniform'),
+        'degree': (1, 8),  # integer valued parameter
+        'kernel': ['linear', 'poly', 'rbf'],  # categorical parameter
     }
 
     classifier_config['classifiers'].append({
@@ -25,7 +32,13 @@ def gen_clf_config():
     })
 
     gb_grid = {
-        'n_estimators': (100, 102)
+        'learning_rate': (0.01, 0.2),
+        'n_estimators': (100, 2000),
+        'min_samples_split': (2, 50),
+        'min_samples_leaf': (1, 10),
+        'max_features': (4, 13),
+        'subsample': (0.6, 1.0),
+        'max_depth': (3, 15)
     }
 
     classifier_config['classifiers'].append({

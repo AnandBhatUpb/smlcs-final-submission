@@ -7,7 +7,7 @@ Usage:
 
 Options:
   -h --help                             Show this screen.
-  --env<run_environment>                specifies the running environment cluster/PC
+  --env=<run_environment>                specifies the running environment cluster/PC
   --job=<jobid>                         specifies cluster job id
   --subjob=<subjobid>                   specifies cluster subjob id
   --clf=<classifier>                    specifies classifier to train
@@ -26,7 +26,7 @@ from smlcs.evaluation.metrics import CalculateMetrics
 from smlcs.evaluation.plotters import PlotResults
 from smlcs.helper.preprocessing import Preprocessing
 from smlcs.helper.write_training_result import WriteToCSV
-from imblearn.over_sampling import SMOTE
+#from imblearn.over_sampling import SMOTE
 from collections import Counter
 
 from sklearn.preprocessing import StandardScaler
@@ -77,15 +77,16 @@ class Classifier:
                     X_train, X_test = X[f['outer_train_index']], X[f['outer_test_index']]
                     y_train, y_test = Y[f['outer_train_index']], Y[f['outer_test_index']]
 
-            if cw == 'smote':
-                logger.info('Original dataset shape before smote: {}'.format(Counter(y_train)))
-                sm = SMOTE(random_state=42)
-                X_train, y_train = sm.fit_resample(X_train, y_train)
-                logger.info('Dataset shape after smote: {}'.format(Counter(y_train)))
+            #if cw == 'smote':
+             #   logger.info('Original dataset shape before smote: {}'.format(Counter(y_train)))
+              #  sm = SMOTE(random_state=42)
+             #   X_train, y_train = sm.fit_resample(X_train, y_train)
+              #  logger.info('Dataset shape after smote: {}'.format(Counter(y_train)))
 
             scaler = StandardScaler()
             X_train = scaler.fit_transform(X_train)
             X_test = scaler.transform(X_test)
+            dump(scaler, '../../models_persisted/clf_scalar_' + clf + '_' + job_id + '_' + subjob_id + '.joblib')
 
             with open('../configurations/clf_config.txt') as json_file:
                 clf_config = json.load(json_file)
@@ -164,7 +165,7 @@ class Classifier:
 
             logger.info('Saving trained model')
             dump(opt_clf, '../../models_persisted/clf_'+clf+'_'+job_id+'_'+subjob_id+'.joblib')
-            logger.info('Saved model: {}'.format('reg_'+clf+'_'+job_id+'_'+subjob_id+'.joblib'))
+            logger.info('Saved model: {}'.format('clf_'+clf+'_'+job_id+'_'+subjob_id+'.joblib'))
 
             if environment == 'local':
                 plot = PlotResults(opt_clf)

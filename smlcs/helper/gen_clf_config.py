@@ -6,12 +6,12 @@ def gen_clf_config():
     classifier_config['classifiers'] = []
     classifier_config['innercv_folds'] = 3
 
-    rf_grid = {'n_estimators': (100, 1000),
-               'max_features': (4, 13),
-               'max_depth': (10, 100),
-               'min_samples_split': (2, 50),
-               'min_samples_leaf': (1, 10),
-               'bootstrap': [True, False]
+    rf_grid = {#'n_estimators': (100, 1500),
+               'max_features': (2, 70)
+               #'max_depth': (10, 100)
+               #'min_samples_split': (4, 100),
+               #'min_samples_leaf': (1, 100),
+               #'bootstrap': [True, False]
                }
 
     classifier_config['classifiers'].append({
@@ -32,13 +32,13 @@ def gen_clf_config():
     })
 
     gb_grid = {
-        'learning_rate': (0.01, 0.2),
-        'n_estimators': (100, 2000),
-        'min_samples_split': (2, 50),
-        'min_samples_leaf': (1, 10),
-        'max_features': (4, 13),
-        'subsample': (0.6, 1.0),
-        'max_depth': (3, 15)
+        'learning_rate': (0.01, 0.2)
+        #'n_estimators': (100, 2000),
+        #'min_samples_split': (2, 50),
+        #'min_samples_leaf': (1, 10),
+        #'max_features': (4, 13),
+        #'subsample': (0.6, 1.0),
+       # 'max_depth': (3, 15)
     }
 
     classifier_config['classifiers'].append({

@@ -75,6 +75,7 @@ class Regressor:
             scaler = StandardScaler()
             X_train = scaler.fit_transform(X_train)
             X_test = scaler.transform(X_test)
+            dump(scaler, '../../models_persisted/reg_scalar_' + reg + '_' + job_id + '_' + subjob_id + '.joblib')
 
             with open('../configurations/reg_config.txt') as json_file:
                 reg_config = json.load(json_file)

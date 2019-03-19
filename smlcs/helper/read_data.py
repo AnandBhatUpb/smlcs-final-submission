@@ -24,7 +24,7 @@ class ReadData:
     def read_dataframe(self, logger):
         try:
             if self.source == 'local':
-                clf_dataset = pd.read_csv('../dataset/clf_data.csv')
+                clf_dataset = pd.read_csv('../dataset/clf_data_binary.csv')
                 reg_dataset = pd.read_csv('../dataset/reg_data_75.csv')
             elif self.source == 'remote':
                 clf_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/clf_data.csv"
@@ -44,7 +44,7 @@ class ReadData:
             self.source = source
             logger.info('Dataset set is reading...')
             if source == 'local':
-                self.clf_dataset = pd.read_csv('../dataset/clf_data.csv')
+                self.clf_dataset = pd.read_csv('../dataset/clf_data_binary.csv')
                 self.clf_dataset = self.clf_dataset.drop(['THREAD_DESCR', 'FILE_DESCR', 'CHAR'], axis=1)
 
                 self.reg_dataset = pd.read_csv('../dataset/reg_data_75.csv')

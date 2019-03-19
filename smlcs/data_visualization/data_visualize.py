@@ -53,8 +53,9 @@ class DataVisualize:
             plot_runtime_distribution(runtime, logger)
             plot_heat_map(clf_df, logger)
 
-            counts = [13843, 2620, 8150, 11053, 2798, 10436]
-            classes = ('Correct', 'Incorrect', 'Error', 'Exception', 'Unknown', 'Timeout')
+            #counts = [13843, 2620, 8150, 11053, 2798, 10436]
+            counts = [13843, 35057]
+            classes = ('Correct', 'Noresult')
             plot_class_counts(classes, counts, logger)
 
         except Exception as e:

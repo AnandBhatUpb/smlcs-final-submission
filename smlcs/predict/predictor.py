@@ -44,9 +44,9 @@ class Predictor:
         X_data = np.delete(X_data, np.s_[42:51], axis=1)
         X_data = np.concatenate((X_data, onehotcoded_data), axis=1)
 
-        scalar = load('../../models_persisted/clf_scalar_rf_7076766_5.joblib')
+        scalar = load('../../models_persisted/scalar_binary_1.joblib')
         X_data = scalar.transform(X_data)
-        classifier = load('../../models_persisted/clf_rf_7076766_5.joblib')
+        classifier = load('../../models_persisted/binary_1.joblib')
         classifier = classifier.best_estimator_
         prediction = classifier.predict_proba(X_data)
 

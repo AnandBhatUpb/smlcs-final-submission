@@ -7,8 +7,8 @@ def gen_reg_config():
     regressor_config['innercv_folds'] = 3
 
     rf_grid = {#'n_estimators': (100, 1000),
-               'max_features': (2, 70)
-               #'max_depth': (10, 100),
+               #'max_features': (2, 70)
+               'max_depth': (3, 100),
                #'min_samples_split': (2, 50),
                #'min_samples_leaf': (1, 10),
                #'bootstrap': [True, False]
@@ -32,13 +32,13 @@ def gen_reg_config():
     })
 
     gb_grid = {
-        'learning_rate': (0.01, 0.2)
+        #'learning_rate': (0.01, 0.2)
         #'n_estimators': (100, 2000),
         #'min_samples_split': (2, 50),
         #'min_samples_leaf': (1, 10),
         #'max_features': (4, 13),
         #'subsample': (0.6, 1.0),
-        #'max_depth': (3, 15)
+        'max_depth': (3, 100)
     }
 
     regressor_config['regressors'].append({

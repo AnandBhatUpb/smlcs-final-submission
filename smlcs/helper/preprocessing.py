@@ -8,7 +8,7 @@ class Preprocessing:
         try:
             imputer = SimpleImputer(np.nan, strategy='mean')
             impute = imputer.fit(X)
-            return impute.transform(X)
+            return impute.transform(X), impute
         except Exception as e:
             logger.error('Failed to handle missing data: ' + str(e))
             return None

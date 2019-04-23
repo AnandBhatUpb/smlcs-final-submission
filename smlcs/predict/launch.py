@@ -92,7 +92,9 @@ class Launch:
             predictor = Predictor(self.logger)
             path = path_name
             logger.info('Path to the program feature file: {}'.format(path))
-            programs, program_count, config_count, clf_correct, rt_correct, clf_all = predictor.predictor(path)
+            programs, program_count, config_count, clf_correct, rt_correct, clf_all, all_rtime= predictor.predictor(path)
+            print(len(all_rtime))
+            print(len(clf_all))
             list_1 = []
             list_2 = []
             list_3 = []
@@ -127,6 +129,7 @@ class Launch:
             res.grid(row=4, column=3)
 
             for i in range(0, len(list_1)):
+                #print('{} -- {} -- {}'.format(list_1[i], list_2[i], list_3[i]))
                 res = Label(o.frame, text=list_1[i], font=("Times New Roman", 10))
                 res.grid(row=i + 5, column=0)
 
@@ -144,6 +147,13 @@ class Launch:
 
                 button_identities.append(verify_button)
 
+            for i in all_rtime:
+                print(i)
+
+            print('===================')
+            print('===================')
+            for j in clf_all:
+                print(j[0])
     except Exception as e:
         print('Error in launch.py')
 

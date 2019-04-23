@@ -37,11 +37,11 @@ def get_data_estimator():
                 X_train, X_test = X[f['outer_train_index']], X[f['outer_test_index']]
                 y_train, y_test = Y[f['outer_train_index']], Y[f['outer_test_index']]
 
-        scalar = load('../../models_persisted/cluster_model_analysis/clf_scalar_rf_7076778_5.joblib')
+        scalar = load('../../models_persisted/clf_scalar_gb_7076798_1.joblib')
         X_train = scalar.transform(X_train)
         X_test = scalar.transform(X_test)
 
-        learner = load('../../models_persisted/cluster_model_analysis/clf_rf_7076778_5.joblib')
+        learner = load('../../models_persisted/clf_gb_7076798_1.joblib')
         #learner = est.best_estimator_
 
         return X_train, X_test, y_train, y_test, learner, feature_names, logger
@@ -61,5 +61,5 @@ def plot_feature_imp():
     plot.plot_feature_imp(feature_names, logger, 7076778, 5)
 
 
-plot_confusion_matrix()
+#plot_confusion_matrix()
 plot_feature_imp()

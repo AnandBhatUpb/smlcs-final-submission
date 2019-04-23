@@ -44,9 +44,9 @@ class Predictor:
         X_data = np.delete(X_data, np.s_[42:51], axis=1)
         X_data = np.concatenate((X_data, onehotcoded_data), axis=1)
 
-        scalar = load('../../models_persisted/scalar_binary_1.joblib')
+        scalar = load('../../models_persisted/clf_scalar_gb_7076798_1.joblib')
         X_data = scalar.transform(X_data)
-        classifier = load('../../models_persisted/binary_1.joblib')
+        classifier = load('../../models_persisted/clf_gb_7076798_1.joblib')
         classifier = classifier.best_estimator_
         prediction = classifier.predict_proba(X_data)
 
@@ -61,8 +61,8 @@ class Predictor:
                 j += 1
                 count = 0
             configuration = configuration_list[count]
-            if prediction[i][0] > 0.6:
-                print('{} -- {} -- {}'.format(program, configuration, prediction[i][0]))
+            if prediction[i][0] > 0.9:
+                #print('{} -- {} -- {}'.format(program, configuration, prediction[i][0]))
                 predict_count.append(i)
                 config_count.append(configuration)
                 program_count.append(program)
@@ -72,14 +72,15 @@ class Predictor:
         for i in predict_count:
             class_prediction.append(prediction[i])
 
-        regressor = load('../../models_persisted/reg_rf_888_1.joblib')
+        regressor = load('../../models_persisted/reg_gb_7076756_1.joblib')
         regressor = regressor.best_estimator_
         runtime_prediction = []
         for i in predict_count:
             runtime_prediction.append(regressor.predict(X_data[i, :].reshape(1, -1)))
 
-        print(runtime_prediction)
-        return program_list, program_count, config_count, class_prediction, runtime_prediction, prediction
+        #print(runtime_prediction)
+        all_rtime =  regressor.predict(X_data)
+        return program_list, program_count, config_count, class_prediction, runtime_prediction, prediction, all_rtime
 
     def __init__(self, log):
         self.logger = log

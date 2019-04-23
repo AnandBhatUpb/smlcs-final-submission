@@ -52,8 +52,8 @@ class ReadData:
                 logger.info('Dataset shape classification: {}'.format(self.clf_dataset.shape))
                 logger.info('Dataset shape regression: {}'.format(self.reg_dataset.shape))
             elif source == 'remote':
-                clf_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/clf_data.csv"
-                reg_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/reg_data_75.csv"
+                clf_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/clf_data_reachsafety.csv"
+                reg_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/reg_data_reachsafety.csv"
                 self.clf_dataset = pd.read_csv(clf_url)
                 self.clf_dataset = self.clf_dataset.drop(['THREAD_DESCR', 'FILE_DESCR', 'CHAR'], axis=1)
 

@@ -6,7 +6,7 @@ DISTNAME = 'smlcs'
 DESCRIPTION = 'Supervised machine learning approach for CPAchecker configuration selection'
 MAINTAINER = 'Anand Bhat'
 MAINTAINER_EMAIL = 'bhat@mail.upb.de'
-VERSION = "1.0"
+VERSION = "1.1"
 
 PROJECT_ROOT = dirname(realpath(__file__))
 REQUIREMENTS_FILE = join(PROJECT_ROOT, 'requirements.txt')

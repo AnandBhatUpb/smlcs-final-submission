@@ -52,7 +52,7 @@ class Regressor:
 
             X, Y, pgm_features = ReadData(datasource, logger).read_reg_data(logger)  # Read data from local/remote
 
-            X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
+            X[:, 0:42], imputerobject = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
 
             onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51],
                                                                                         logger)  # OneHotCode categorical data
@@ -76,7 +76,7 @@ class Regressor:
             X_train = scaler.fit_transform(X_train)
             X_test = scaler.transform(X_test)
             dump(scaler, '../../models_persisted/reg_scalar_' + reg + '_' + job_id + '_' + subjob_id + '.joblib')
-
+            dump(imputerobject, '../../models_persisted/reg_imputer_' + reg + '_' + job_id + '_' + subjob_id + '.joblib')
             with open('../configurations/reg_config.txt') as json_file:
                 reg_config = json.load(json_file)
             innercvfolds = int(reg_config['innercv_folds'])
@@ -87,7 +87,7 @@ class Regressor:
             for c in reg_config['regressors']:
                 if reg == c['reg_name']:
                     if reg == 'rf':
-                        estimator = ensemble.RandomForestRegressor(random_state=0)
+                        estimator = ensemble.RandomForestRegressor(random_state=1)
                         tuning_parameters = c['reg_parameters']
                         break
                     elif reg == 'svr':
@@ -95,7 +95,7 @@ class Regressor:
                         tuning_parameters = c['reg_parameters']
                         break
                     else:
-                        estimator = ensemble.GradientBoostingRegressor(random_state=0)
+                        estimator = ensemble.GradientBoostingRegressor(random_state=1)
                         tuning_parameters = c['reg_parameters']
                         break
 

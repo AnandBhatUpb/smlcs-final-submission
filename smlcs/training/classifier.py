@@ -56,7 +56,7 @@ class Classifier:
             logger.info('Data source selected for training: {}'.format(datasource))
 
             X, Y, pgm_features = ReadData(datasource, logger).read_clf_data(logger)  # Read data from local/remote
-            X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
+            X[:, 0:42], imputerobject = Preprocessing().handle_missing_data(X[:, 0:42], logger)  # Handle missing data
 
             onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51],
                                                                                         logger)  # OneHotCode categorical data
@@ -87,7 +87,7 @@ class Classifier:
             X_train = scaler.fit_transform(X_train)
             X_test = scaler.transform(X_test)
             dump(scaler, '../../models_persisted/clf_scalar_' + clf + '_' + job_id + '_' + subjob_id + '.joblib')
-
+            dump(imputerobject, '../../models_persisted/clf_imputer_' + clf + '_' + job_id + '_' + subjob_id + '.joblib')
             with open('../configurations/clf_config.txt') as json_file:
                 clf_config = json.load(json_file)
             innercvfolds = int(clf_config['innercv_folds'])
@@ -114,18 +114,18 @@ class Classifier:
                         if cw == 'smote':
                             estimator = ensemble.RandomForestClassifier(random_state=0)
                         else:
-                            estimator = ensemble.RandomForestClassifier(class_weight=class_weight, random_state=0)
+                            estimator = ensemble.RandomForestClassifier(class_weight=class_weight, random_state=1)
                         tuning_parameters = c['clf_parameters']
                         break
                     elif clf == 'svc':
                         if cw == 'smote' or cw == 'imbalanced':
                             estimator = svm.SVC(random_state=0)
                         else:
-                            estimator = svm.SVC(class_weight=class_weight, random_state=0)
+                            estimator = svm.SVC(class_weight=class_weight, random_state=1)
                         tuning_parameters = c['clf_parameters']
                         break
                     else:
-                        estimator = ensemble.GradientBoostingClassifier(random_state=0)
+                        estimator = ensemble.GradientBoostingClassifier(random_state=1)
                         tuning_parameters = c['clf_parameters']
                         break
 

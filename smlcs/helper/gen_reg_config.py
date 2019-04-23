@@ -4,14 +4,13 @@ import json
 def gen_reg_config():
     regressor_config = dict()
     regressor_config['regressors'] = []
-    regressor_config['innercv_folds'] = 3
+    regressor_config['innercv_folds'] = 10
 
-    rf_grid = {#'n_estimators': (100, 1000),
-               #'max_features': (2, 70)
-               'max_depth': (3, 100),
-               #'min_samples_split': (2, 50),
-               #'min_samples_leaf': (1, 10),
-               #'bootstrap': [True, False]
+    rf_grid = {'n_estimators': (1000, 2000),
+               'max_features': (50, 75),
+               'max_depth': (20, 40),
+               'min_samples_split': (2, 100),
+               'min_samples_leaf': (1, 10),
                }
 
     regressor_config['regressors'].append({
@@ -32,13 +31,13 @@ def gen_reg_config():
     })
 
     gb_grid = {
-        #'learning_rate': (0.01, 0.2)
-        #'n_estimators': (100, 2000),
-        #'min_samples_split': (2, 50),
-        #'min_samples_leaf': (1, 10),
-        #'max_features': (4, 13),
-        #'subsample': (0.6, 1.0),
-        'max_depth': (3, 100)
+        'learning_rate': (0.1, 0.3),
+        'n_estimators': (1000, 2000),
+        'min_samples_split': (2, 100),
+        'min_samples_leaf': (1, 10),
+        'max_features': (4, 13),
+        'subsample': (0.6, 1.0),
+        'max_depth': (5, 20)
     }
 
     regressor_config['regressors'].append({

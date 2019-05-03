@@ -90,9 +90,9 @@ class ClassificationData:
             logger.info('Experiment environment: {}'.format(environment))
 
             X, Y, pgm_features = ReadData(datasource, logger).read_clf_data(logger)       # Read data from local/remote
-
-            X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)    # Handle missing data
-
+            print('probelm area 1')
+            X[:, 0:42], imp = Preprocessing().handle_missing_data(X[:, 0:42], logger)    # Handle missing data
+            print('problem ara 2')
             onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51], logger)    # OneHotCode categorical data
             feature_names = pgm_features + config_features
             X = np.delete(X, np.s_[42:51], axis=1)

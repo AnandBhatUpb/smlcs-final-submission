@@ -92,7 +92,7 @@ class RegressionData:
 
             X, Y, pgm_features = ReadData(datasource, logger).read_reg_data(logger)       # Read data from local/remote
 
-            X[:, 0:42] = Preprocessing().handle_missing_data(X[:, 0:42], logger)    # Handle missing data
+            X[:, 0:42], imp = Preprocessing().handle_missing_data(X[:, 0:42], logger)    # Handle missing data
 
             onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X[:, 42:51], logger)    # OneHotCode categorical data
             feature_names = pgm_features + config_features

@@ -6,11 +6,11 @@ def gen_clf_config():
     classifier_config['classifiers'] = []
     classifier_config['innercv_folds'] = 10
 
-    rf_grid = {'n_estimators': (1000, 2000),
-               'max_features': (50, 75),
-               'max_depth': (10, 20),
-               'min_samples_split': (2, 100),
-               'min_samples_leaf': (1, 100)
+    rf_grid = {#'n_estimators': (1000, 2000),
+               'max_features': (50, 60),
+               'max_depth': (15, 30),
+               'min_samples_split': (2, 10),
+               'min_samples_leaf': (1, 5)
                }
 
     classifier_config['classifiers'].append({

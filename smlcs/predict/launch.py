@@ -88,13 +88,18 @@ class ScrollFrame:
 
 class Launch:
     try:
-        def lauch_gui(self, path_name):
+        def lauch_gui_1(self, path_name):
             predictor = Predictor(self.logger)
             path = path_name
             logger.info('Path to the program feature file: {}'.format(path))
             programs, program_count, config_count, clf_correct, rt_correct, clf_all, all_rtime= predictor.predictor(path)
-            print(len(all_rtime))
-            print(len(clf_all))
+            print(len(program_count))
+            print(len(config_count))
+            print(len(clf_correct))
+
+            for i in range(0, len(clf_correct)):
+                print('{} -- {} -- {}'.format(program_count[i], config_count[i], clf_correct[i][0]))
+
             list_1 = []
             list_2 = []
             list_3 = []
@@ -147,13 +152,137 @@ class Launch:
 
                 button_identities.append(verify_button)
 
-            for i in all_rtime:
-                print(i)
+        def lauch_gui_3(self, path_name):
+            predictor = Predictor(self.logger)
+            path = path_name
+            logger.info('Path to the program feature file: {}'.format(path))
+            programs, program_count, config_count, clf_correct, rt_correct, clf_all, all_rtime= predictor.predictor(path)
 
-            print('===================')
-            print('===================')
-            for j in clf_all:
-                print(j[0])
+            list_1 = []
+            list_2 = []
+            list_3 = []
+            list_4 = []
+            count = 0
+            high_accuracy = 0
+            for p in programs:
+                if p in program_count:
+                    while count < len(program_count) and p == program_count[count]:
+                        if high_accuracy < clf_correct[count][0]:
+                            high_accuracy = clf_correct[count][0]
+                            index = count
+                        count += 1
+                    list_1.append(p)
+                    list_2.append(config_count[index])
+                    list_3.append(clf_correct[index][0])
+                    list_4.append(rt_correct[index])
+                    high_accuracy = 0
+                else:
+                    list_1.append(p)
+                    list_2.append('--')
+                    list_3.append('--')
+                    list_4.append('--')
+
+            res = Label(o.frame, text='Program', font=("Arial Bold", 10))
+            res.grid(row=4, column=0)
+            res = Label(o.frame, text='Configurations', font=("Arial Bold", 10))
+            res.grid(row=4, column=1)
+            res = Label(o.frame, text='Predict_prob', font=("Arial Bold", 10))
+            res.grid(row=4, column=2)
+            res = Label(o.frame, text='Runtime', font=("Arial Bold", 10))
+            res.grid(row=4, column=3)
+
+            for i in range(0, len(list_1)):
+                print('{} -- {} -- {}'.format(list_1[i], list_2[i], list_3[i]))
+                res = Label(o.frame, text=list_1[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=0)
+
+                res = Label(o.frame, text=list_2[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=1)
+
+                res = Label(o.frame, text=list_3[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=2)
+
+                res = Label(o.frame, text=str(list_4[i]), font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=3)
+
+                verify_button = Button(o.frame, text="Verify", command=partial(verify, list_1[i], list_2[i], i + 5))
+                verify_button.grid(row=i + 5, column=4)
+
+                button_identities.append(verify_button)
+
+        def lauch_gui_2(self, path_name):
+            predictor = Predictor(self.logger)
+            path = path_name
+            logger.info('Path to the program feature file: {}'.format(path))
+            programs, program_count, config_count, clf_correct, rt_correct, clf_all, all_rtime= predictor.predictor(path)
+
+            list_1 = []
+            list_2 = []
+            list_3 = []
+            list_4 = []
+            count = 0
+            for p in programs:
+                if p in program_count:
+                    c_list = []
+                    p_list = []
+                    while count < len(program_count) and p == program_count[count]:
+                        c_list.append(config_count[count])
+                        p_list.append(clf_correct[count][0])
+                        count += 1
+                    l = sorted(zip(p_list, c_list), reverse=True)[:3]
+
+                    list_1.append(p)
+                    if len(l) == 3 or len(l) > 3:
+                        list_2.append(l[0][1])
+                        list_3.append(l[1][1])
+                        list_4.append(l[2][1])
+                    elif len(l) == 2:
+                        list_2.append(l[0][1])
+                        list_3.append(l[1][1])
+                        list_4.append('--')
+                    elif len(l) == 1:
+                        list_2.append(l[0][1])
+                        list_3.append('--')
+                        list_4.append('--')
+                    else:
+                        list_2.append('--')
+                        list_3.append('--')
+                        list_4.append('--')
+
+                else:
+                    list_1.append(p)
+                    list_2.append('--')
+                    list_3.append('--')
+                    list_4.append('--')
+
+            res = Label(o.frame, text='Program', font=("Arial Bold", 10))
+            res.grid(row=4, column=0)
+            res = Label(o.frame, text='Configurations', font=("Arial Bold", 10))
+            res.grid(row=4, column=1)
+            res = Label(o.frame, text='Predict_prob', font=("Arial Bold", 10))
+            res.grid(row=4, column=2)
+            res = Label(o.frame, text='Runtime', font=("Arial Bold", 10))
+            res.grid(row=4, column=3)
+
+            for i in range(0, len(list_1)):
+                print('{} -- {} -- {} -- {}'.format(list_1[i], list_2[i], list_3[i], list_4[i]))
+                res = Label(o.frame, text=list_1[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=0)
+
+                res = Label(o.frame, text=list_2[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=1)
+
+                res = Label(o.frame, text=list_3[i], font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=2)
+
+                res = Label(o.frame, text=str(list_4[i]), font=("Times New Roman", 10))
+                res.grid(row=i + 5, column=3)
+
+                verify_button = Button(o.frame, text="Verify", command=partial(verify, list_1[i], list_2[i], i + 5))
+                verify_button.grid(row=i + 5, column=4)
+
+                button_identities.append(verify_button)
+
     except Exception as e:
         print('Error in launch.py')
 
@@ -194,8 +323,10 @@ if __name__ == '__main__':
             filename = filedialog.askopenfilename()
             folder_path.set('Selected file: ' + str(filename))
             launch = Launch(logger, roots)
-            predict_button = Button(o.frame, text="Predict", command=lambda: launch.lauch_gui(filename))
+            predict_button = Button(o.frame, text="Predict_our_approach", command=lambda: launch.lauch_gui_1(filename))
             predict_button.grid(row=2, column=1)
+            predict_button_high = Button(o.frame, text="Predict_high_accuracy", command=lambda: launch.lauch_gui_2(filename))
+            predict_button_high.grid(row=2, column=3)
 
         root = Tk()
 

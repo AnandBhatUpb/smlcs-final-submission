@@ -1,13 +1,14 @@
 import numpy as np
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-
+from joblib import load
 
 class Preprocessing:
     def handle_missing_data(self, X, logger):
         try:
             imputer = SimpleImputer(np.nan, strategy='mean')
             impute = imputer.fit(X)
+            #impute = load('../../models_persisted/clf_imputer_rf_1684718_3.joblib')
             return impute.transform(X), impute
         except Exception as e:
             logger.error('Failed to handle missing data: ' + str(e))

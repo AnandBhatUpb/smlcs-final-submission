@@ -1,0 +1,11 @@
+Prediction - INFO - Prediction date: 2019-05-08 11:45:15.902472
+Prediction - INFO - GUI : yes
+Prediction - INFO - Program path: wee
+Prediction - INFO - Path to the program feature file: D:/Thesis/new_thesis/sml-cs/smlcs/dataset/reachsafety_300.csv
+Prediction - INFO - Onehot encoded feature names: ['x0_bmc' 'x0_predicate' 'x0_value' 'x0_valueBdd' 'x0_valuePredicate'
+ 'x1_lbe' 'x1_notApply' 'x1_notset' 'x1_sbe' 'x2_no' 'x2_yes'
+ 'x3_BamRefiner' 'x3_notApply' 'x3_notset' 'x3_predicateRefiner'
+ 'x3_sliceRefiner' 'x3_valueDelegateRefiner' 'x3_valueRefiner'
+ 'x4_notApply' 'x4_notset' 'x4_yes' 'x5_bool' 'x5_intAdd' 'x5_notApply'
+ 'x5_notset' 'x6_bdd' 'x6_formula' 'x6_notApply' 'x7_1' 'x7_10' 'x7_20'
+ 'x7_5' 'x7_notApply' 'x8_df' 'x8_ki' 'x8_notApply' 'x8_notset']

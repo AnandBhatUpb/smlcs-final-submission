@@ -18,9 +18,9 @@ def indent(elem, level=0):
       elem.tail = i
 
 
-predictions = pd.read_csv('../dataset/new_method.csv')
+predictions = pd.read_csv('../dataset/reachsafety_3_config.csv')
 programs = list(predictions['programs'].values)
-configurations = list(predictions['configurations'].values)
+configurations = list(predictions['configuration3'].values)
 
 for i in range(len(programs)):
     root = ET.Element("benchmark", timelimit="300", tool="cpachecker")

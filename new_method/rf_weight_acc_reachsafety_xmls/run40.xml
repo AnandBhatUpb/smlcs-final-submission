@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<!DOCTYPE benchmark
+  PUBLIC '+//IDN sosy-lab.org//DTD BenchExec benchmark 1.0//EN'
+  'http://www.sosy-lab.org/benchexec/benchmark-1.0.dtd'>
+<benchmark timelimit="300" tool="cpachecker">
+  <tasks name="runSet">
+    <include>../experiment_programs/cs_fib_false-unreach-call.c</include>
+    <propertyfile>../ALL.prp</propertyfile>
+  </tasks>
+  <option name="-heap">10000M</option>
+  <option name="-predicateconfig3" />
+  <option name="-disable-java-assertions" />
+  <option name="-spec">default</option>
+  <option name="-preprocess" />
+  <option name="-skipRecursion" />
+  <rundefinition name="predicateconfig3">
+    <option name="-noout" />
+  </rundefinition>
+</benchmark>

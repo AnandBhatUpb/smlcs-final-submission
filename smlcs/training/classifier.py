@@ -97,15 +97,11 @@ class Classifier:
             tuning_parameters = None
             if cw == 'imbalanced':
                 class_weight = None
-            elif cw == 'classweight':
-                class_weight = 'balanced'
             elif cw == 'balanced':
-                class_weight = {0: 1.0,
-                                1: 1.0,
-                                2: 1.0,
-                                3: 4.0,
-                                4: 1.0,
-                                5: 1.0
+                class_weight = 'balanced'
+            elif cw == 'classweight':
+                class_weight = {0: 5.0,
+                                1: 1.0
                                 }
 
             for c in clf_config['classifiers']:

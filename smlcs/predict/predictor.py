@@ -37,7 +37,7 @@ class Predictor:
                     X = np.append(X, y, axis=0)
 
         X_data = np.delete(X, 0, 0)
-        X_data[:, 0:42] = Preprocessing().handle_missing_data(X_data[:, 0:42], logger)
+        X_data[:, 0:42], imp = Preprocessing().handle_missing_data(X_data[:, 0:42], logger)
         onehotcoded_data, config_features = Preprocessing().encode_categorical_data(X_data[:, 42:51],
                                                                                     logger)
         feature_names = list(program_feature_names) + config_features
@@ -61,7 +61,7 @@ class Predictor:
                 j += 1
                 count = 0
             configuration = configuration_list[count]
-            if prediction[i][0] > 0.9:
+            if prediction[i][0] > 0.80:
                 #print('{} -- {} -- {}'.format(program, configuration, prediction[i][0]))
                 predict_count.append(i)
                 config_count.append(configuration)

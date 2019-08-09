@@ -8,7 +8,7 @@ class Preprocessing:
         try:
             imputer = SimpleImputer(np.nan, strategy='mean')
             impute = imputer.fit(X)
-            #impute = load('../../models_persisted/clf_imputer_rf_1684718_3.joblib')
+            #impute = load('PATH TO IMPUTER')
             return impute.transform(X), impute
         except Exception as e:
             logger.error('Failed to handle missing data: ' + str(e))

@@ -39,7 +39,7 @@ class PlotResults:
             plt.barh(range(len(indices)), importances[indices], color='g', align='center')
             plt.yticks(range(len(indices)), [features[i] for i in indices])
             plt.xlabel('Relative Importance')
-            plt.savefig('../../plots/fi_'+str(argv[0])+"_"+str(argv[1])+'.png')
+            plt.savefig('../../plots/fi_'+str(argv[0])+"_"+str(argv[1])+'.pdf')
             logger.info('Plotting feature importance completed')
         except Exception as e:
             logger.error('Failed in plot_feature_imp:' + str(e))

@@ -44,16 +44,16 @@ class ReadData:
             self.source = source
             logger.info('Dataset set is reading...')
             if source == 'local':
-                self.clf_dataset = pd.read_csv('../dataset/clf_data_binary.csv')
+                self.clf_dataset = pd.read_csv('../dataset/clf_data.csv')
                 self.clf_dataset = self.clf_dataset.drop(['THREAD_DESCR', 'FILE_DESCR', 'CHAR'], axis=1)
 
-                self.reg_dataset = pd.read_csv('../dataset/reg_data_75.csv')
+                self.reg_dataset = pd.read_csv('../dataset/reg_data.csv')
                 self.reg_dataset = self.reg_dataset.drop(['THREAD_DESCR', 'FILE_DESCR', 'CHAR'], axis=1)
                 logger.info('Dataset shape classification: {}'.format(self.clf_dataset.shape))
                 logger.info('Dataset shape regression: {}'.format(self.reg_dataset.shape))
             elif source == 'remote':
-                clf_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/clf_data_binary.csv"
-                reg_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/reg_data_termination.csv"
+                clf_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/clf_data.csv"
+                reg_url = "https://raw.github.com/AnandBhatUpb/CPAchecker_dataset/master/reg_data.csv"
                 self.clf_dataset = pd.read_csv(clf_url)
                 self.clf_dataset = self.clf_dataset.drop(['THREAD_DESCR', 'FILE_DESCR', 'CHAR'], axis=1)
 

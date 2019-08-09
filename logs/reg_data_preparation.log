@@ -1,9 +1,0 @@
-Data_preparation - INFO - Started at : 2019-04-23 13:16:31.518004
-Data_preparation - INFO - Data source selected: remote
-Data_preparation - INFO - Split strategy selected: shuffle
-Data_preparation - INFO - Number of outer CV folds: 5
-Data_preparation - INFO - Experiment environment: cluster
-Data_preparation - INFO - Dataset set is reading...
-Data_preparation - INFO - Dataset shape classification: (98100, 52)
-Data_preparation - INFO - Dataset shape regression: (73098, 52)
-Data_preparation - ERROR - Failed in the main of regression.py: could not broadcast input array from shape (2) into shape (73098,42)

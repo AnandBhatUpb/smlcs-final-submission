@@ -1,0 +1,13 @@
+﻿configurations,cpa,abstraction_block,cex,refiner,recursion,bdd_value,abstract_computation,k,invariant_generation
+bmcconfig1,bmc,notset,no,notApply,notApply,notApply,notApply,1,notset
+bmcconfig2,bmc,notset,no,notApply,notApply,notApply,notApply,5,notset
+bmcconfig3,bmc,notset,no,notApply,notApply,notApply,notApply,10,notset
+bmcconfig4,bmc,notset,no,notApply,notApply,notApply,notApply,20,notset
+bmcconfig5,bmc,notset,no,notApply,notApply,notApply,notApply,1,df
+bmcconfig6,bmc,notset,no,notApply,notApply,notApply,notApply,5,df
+bmcconfig7,bmc,notset,no,notApply,notApply,notApply,notApply,10,df
+bmcconfig8,bmc,notset,no,notApply,notApply,notApply,notApply,20,df
+bmcconfig9,bmc,notset,no,notApply,notApply,notApply,notApply,1,ki
+bmcconfig10,bmc,notset,no,notApply,notApply,notApply,notApply,5,ki
+bmcconfig11,bmc,notset,no,notApply,notApply,notApply,notApply,10,ki
+bmcconfig12,bmc,notset,no,notApply,notApply,notApply,notApply,20,ki

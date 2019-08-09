@@ -44,9 +44,9 @@ class Predictor:
         X_data = np.delete(X_data, np.s_[42:51], axis=1)
         X_data = np.concatenate((X_data, onehotcoded_data), axis=1)
 
-        scalar = load('../../models_persisted/clf_scalar_gb_7076798_1.joblib')
+        scalar = load('PATH TO SCALAR FILE')
         X_data = scalar.transform(X_data)
-        classifier = load('../../models_persisted/clf_gb_7076798_1.joblib')
+        classifier = load('PATH TO SAVED MODEL')
         classifier = classifier.best_estimator_
         prediction = classifier.predict_proba(X_data)
 
@@ -72,7 +72,7 @@ class Predictor:
         for i in predict_count:
             class_prediction.append(prediction[i])
 
-        regressor = load('../../models_persisted/reg_gb_7076756_1.joblib')
+        regressor = load('PATH TO SAVED MODEL')
         regressor = regressor.best_estimator_
         runtime_prediction = []
         for i in predict_count:
